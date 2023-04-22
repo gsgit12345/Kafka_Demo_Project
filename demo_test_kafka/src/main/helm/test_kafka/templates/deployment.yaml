@@ -35,16 +35,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: tcp-inside
-              containerPort: 9093
+              containerPort: 9092
             - name: tcp-outside
               containerPort: 9094
           env:
            - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
              value: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT,LOOPBACK:PLAINTEXT"
            - name: KAFKA_ADVERTISED_LISTENERS
-             value: "INSIDE://DEMO_TEST_KAFKA:9093,OUTSIDE://{{ .Values.kafkaOutSideName }}:9094,LOOPBACK://localhost:9095" 
+             value: "INSIDE://DEMO_TEST_KAFKA:9092,OUTSIDE://{{ .Values.kafkaOutSideName }}:9094,LOOPBACK://localhost:9095"
            - name: KAFKA_LISTENERS
-             values: "INSIDE://:9093,OUTSIDE://:9093,LOOPBACK://:9095"
+             values: "INSIDE://:9092,OUTSIDE://:9094,LOOPBACK://:9095"
            - name: KAFKA_INTER_BROKER_LISTENER_NAME
              value: "LOOPBACK"
            - name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
@@ -56,7 +56,7 @@ spec:
            - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
              value: "false"
            - name: KAFKA_PORT
-             value: "9093"          
+             value: "9092"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
