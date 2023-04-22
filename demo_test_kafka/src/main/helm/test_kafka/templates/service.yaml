@@ -14,4 +14,4 @@ spec:
       port: 9094
       targetPort: 9094  
   selector:
-    {{- include "test_kafka.name" . | nindent 4 }}
+     app: {{ .Values.name }}

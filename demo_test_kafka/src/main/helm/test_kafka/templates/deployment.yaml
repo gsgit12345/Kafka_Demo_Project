@@ -10,7 +10,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "test_kafka.selectorLabels" . | nindent 6 }}
+       app: {{ .Values.name }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -38,14 +38,25 @@ spec:
               containerPort: 9093
             - name: tcp-outside
               containerPort: 9094
-         # livenessProbe:
-          #  httpGet:
-           #   path: /
-            #  port: http
-         # readinessProbe:
-          #  httpGet:
-           #   path: /
-            #  port: http
+          env:
+           - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+             value: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT,LOOPBACK:PLAINTEXT"
+           - name: KAFKA_ADVERTISED_LISTENERS
+             value: "INSIDE://DEMO_TEST_KAFKA:9093,OUTSIDE://{{ .Values.kafkaOutSideName }}:9094,LOOPBACK://localhost:9095" 
+           - name: KAFKA_LISTENERS
+             values: "INSIDE://:9093,OUTSIDE://:9093,LOOPBACK://:9095"
+           - name: KAFKA_INTER_BROKER_LISTENER_NAME
+             value: "LOOPBACK"
+           - name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
+             value: "1"
+           - name: KAFKA_LOG_RETENTION_HOURS
+             value: "40"
+           - name: KAFKA_DELETE_TOPIC_ENABLE
+             value: "true"
+           - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
+             value: "false"
+           - name: KAFKA_PORT
+             value: "9093"          
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

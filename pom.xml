@@ -8,5 +8,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <groupId>com.demo.project</groupId>
   <artifactId>Kafka_demo_project</artifactId>
   <version>1.0</version>
+  <modules>
+    <module>demo_test_kafka</module>
+  </modules>
   <packaging>pom</packaging>
 </project>  
