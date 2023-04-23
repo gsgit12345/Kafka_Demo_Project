@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
        app: {{ .Values.name }}
+       id: 0
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "test_kafka.selectorLabels" . | nindent 8 }}
+          {{- include "test_kafka.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
