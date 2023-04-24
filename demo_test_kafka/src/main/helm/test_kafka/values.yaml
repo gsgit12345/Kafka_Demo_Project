@@ -4,8 +4,8 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  name: kafka
-  repository: bitnami/kafka:latest
+  name: na_kafka
+  repository: bitnami/kafka
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "3.4.0-debian-11-r15"
