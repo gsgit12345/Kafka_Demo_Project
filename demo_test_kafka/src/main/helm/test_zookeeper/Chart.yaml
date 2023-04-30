@@ -1,5 +1,5 @@
 apiVersion: v2
-name: kafkademo
+name: demo-zookeeper
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -21,5 +21,4 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 appVersion: "1.16.0"

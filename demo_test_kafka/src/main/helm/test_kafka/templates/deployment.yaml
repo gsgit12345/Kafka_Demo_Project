@@ -7,9 +7,7 @@ metadata:
      helm.sh/chart : {{ template "test_kafka.chart" . }}
      app.kubernetes.io/managed-by : {{ .Release.Service }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
        app: {{ .Values.name }}
@@ -27,45 +25,41 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "test_kafka.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: tcp-inside
-              containerPort: 9092
+              containerPort: 9091
             - name: tcp-outside
-              containerPort: 9094
+              containerPort: 9093
           env:
+           - name: KAFKA_ZOOKEEPER_CONNECT
+             value: "na-zookeeper:2181"
            - name:   ALLOW_PLAINTEXT_LISTENER
              value: "yes"
            - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
              value: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT,LOOPBACK:PLAINTEXT"
            - name: KAFKA_ADVERTISED_LISTENERS
-             value: "INSIDE://DEMO_TEST_KAFKA:9092,OUTSIDE://{{ .Values.kafkaOutSideName }}:9094,LOOPBACK://localhost:9095"
+             value: "INSIDE://DEMO_TEST_KAFKA:9091,OUTSIDE://{{ .Values.kafkaOutSideName }}:9093,LOOPBACK://localhost:9095"
            - name: KAFKA_LISTENERS
-             value: "INSIDE://:9092,OUTSIDE://:9094,LOOPBACK://:9095"
+             value: "INSIDE://:9091,OUTSIDE://:9093,LOOPBACK://:9095"
            - name: KAFKA_INTER_BROKER_LISTENER_NAME
              value: "LOOPBACK"
-           #- name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
-           #  value: "1"
-           #- name: KAFKA_LOG_RETENTION_HOURS
-            # value: "40"
-           #- name: KAFKA_DELETE_TOPIC_ENABLE
-            # value: "true"
-           #- name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
-            # value: "false"
-           #- name: KAFKA_PORT
-            # value: "9092"
-           #- name:   ALLOW_PLAINTEXT_LISTENER
-            # value: "yes"
-           #- name: KAFKA_CFG_LISTENERS
-            # value: "PLAINTEXT://:9092"
+           - name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
+             value: "1"
+           - name: KAFKA_LOG_RETENTION_HOURS
+             value: "40"
+           - name: KAFKA_DELETE_TOPIC_ENABLE
+             value: "true"
+           - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
+             value: "false"
+           - name: KAFKA_PORT
+             value: "9092"
+           - name: KAFKA_CFG_LISTENERS
+             value: "PLAINTEXT://:9092"
 
 
 

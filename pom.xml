@@ -11,6 +11,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <packaging>pom</packaging>
   <modules>
     <module>demo_test_kafka</module>
+    <module>BASE_IMAGE_COMPONENT</module>
   </modules>
 
   <properties>
