@@ -56,6 +56,8 @@ spec:
               value: "{{ .Values.leaderElectionPort }}"
             - name: Djute.maxbuffer
               value: "0x400000"
+            #- name: ZOO_CONF_DIR
+            #  value: /conf
 
             # - name: SERVER_JVMFLAGS
             #  value: "Xmx256m -Xms256m"
@@ -63,7 +65,7 @@ spec:
           readinessProbe:
               exec:
                 command:
-                  - "/opt/bitnami/zookeeper/bin/zkServer.sh"
+                  - "zkServer.sh"
                   - "status"
               periodSeconds: {{ .Values.periodSeconds }}
               timeoutSeconds: {{ .Values.timeoutSeconds}}

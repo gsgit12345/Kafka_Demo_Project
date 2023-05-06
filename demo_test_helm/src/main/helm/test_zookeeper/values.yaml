@@ -6,8 +6,10 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: bitnami/zookeeper
-  tag: 3.8.1-debian-11-r25
+  #repository: bitnami/zookeeper
+  repository: gshukla123/demo_zookeeper
+  pull_policy: always
+  tag: v1
 
 serviceType: NodePort
 name: demo-zookeeper

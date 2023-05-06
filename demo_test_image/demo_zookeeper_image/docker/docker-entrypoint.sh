@@ -28,6 +28,7 @@ if [[ ! -f "$ZOO_CONF_DIR/zoo.cfg" ]]; then
     } >> "$CONFIG"
     if [[ -z $ZOO_SERVERS ]]; then
       ZOO_SERVERS="server.1=localhost:2888:3888;2181"
+      #ZOO_SERVERS="server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181"
     fi
 
     for server in $ZOO_SERVERS; do

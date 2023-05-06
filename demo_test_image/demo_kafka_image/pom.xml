@@ -5,15 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.demo.project</groupId>
-  <artifactId>demo_test_image</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>demo_kafka_image</artifactId>
   <version>1.0</version>
-  <modules>
-    <module>demo_zookeeper_image</module>
-      <module>demo_kafka_image</module>
-  </modules>
 
-  <name>demo_test_image</name>
+  <name>demo_kafka_image</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
