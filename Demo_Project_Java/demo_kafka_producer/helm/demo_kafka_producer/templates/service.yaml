@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "demo_kafka_producer.name" . }}
+  labels:
+    {{- include "demo_kafka_producer.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "demo_kafka_producer.selectorLabels" . | nindent 4 }}
