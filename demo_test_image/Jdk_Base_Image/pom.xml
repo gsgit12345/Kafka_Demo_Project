@@ -5,23 +5,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.demo.project</groupId>
-  <artifactId>demo_test_image</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>Jdk_Base_Image</artifactId>
   <version>1.0</version>
-  <modules>
-    <module>demo_zookeeper_image</module>
-      <module>demo_kafka_image</module>
-      <module>Jdk_Base_Image</module>
-  </modules>
 
-  <name>demo_test_image</name>
+  <name>Jdk_Base_Image</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
   <dependencies>
