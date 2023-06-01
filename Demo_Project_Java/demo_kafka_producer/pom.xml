@@ -53,11 +53,11 @@
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
             </resource>
-          <resource>
-            <directory>helm</directory>
-            <targetPath>${project.build.directory}/helm</targetPath>
-            <filtering>true</filtering>
-          </resource>
+            <resource>
+                <directory>helm</directory>
+                <targetPath>${project.build.directory}/helm</targetPath>
+                <filtering>true</filtering>
+            </resource>
         </resources>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
@@ -114,20 +114,37 @@
                             <images>
                                 <image>
                                     <name>gshukla123/demo_kafka_producer</name>
+
                                     <build>
+                                        <assembly>
+                                            <descriptorRef>artifact</descriptorRef>
+                                        </assembly>
+
                                         <dockerFile>${project.build.directory}/dependency/Dockerfile</dockerFile>
                                         <filter>@</filter>
                                         <skipPush>true</skipPush>
                                         <tags>
-                                            <tag>${project.version}</tag>
+                                            <tag>1.0.1</tag>
                                         </tags>
                                         <nocache>true</nocache>
                                     </build>
                                 </image>
                             </images>
+                            <authConfig>
+                            <username>gshukla123</username>
+                            <password>gshukla123</password>
+                        </authConfig>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>push</id>
+                        <phase>install</phase>
+                        <goals>
 
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
