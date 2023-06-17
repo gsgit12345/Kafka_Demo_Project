@@ -13,6 +13,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <module>demo_test_helm</module>
         <module>demo_test_image</module>
         <module>Demo_Project_Java</module>
+        <module>demo_base_image_mysql</module>
     </modules>
 
     <properties>
