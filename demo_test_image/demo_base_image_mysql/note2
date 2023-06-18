@@ -1,0 +1,13 @@
+running my sql
+
+https://www.youtube.com/watch?v=XMPYAouPLvo
+
+docker run -it  --name mysql -d gshukla123/mysql:latest   -- running server
+
+[iid@iid ~]$ docker  run -it gshukla123/mysql:latest /bin/bash
+bash-4.4# mysql -h 172.17.0.2 -u root -p  root
+
+
+https://loft.sh/blog/kubernetes-statefulset-examples-and-best-practices/
+
+https://kubebyexample.com/learning-paths/developing-spring-boot-kubernetes/lesson-3-spring-boot-microservices-kubernetes-11

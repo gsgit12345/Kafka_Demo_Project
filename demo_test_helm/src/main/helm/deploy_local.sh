@@ -30,12 +30,14 @@ function cleanProduct
 {
 helm delete test_zookeeper  --namespace=${NAMESPACE}
 helm delete test_kafka  --namespace=${NAMESPACE}
+helm delete test_kafka  --namespace=${NAMESPACE}
 
 }
 
 
  cleanNamespace || true
 
-helm upgrade --debug --force --wait-for-jobs --atomic --install demo-zookeeper  test_zookeeper  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}
-helm upgrade --debug --force --wait-for-jobs --atomic --install kafkademo  test_kafka  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}
+#helm upgrade --debug --force --wait-for-jobs --atomic --install demo-zookeeper  test_zookeeper  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}
+#helm upgrade --debug --force --wait-for-jobs --atomic --install kafkademo  test_kafka  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}
 
+helm upgrade --debug --force --wait-for-jobs --atomic --install mysql  test_mysql  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}

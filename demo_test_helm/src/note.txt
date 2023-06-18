@@ -1,0 +1,17 @@
+
+for debugging the helm chart
+
+helm lint  helm_name
+helm template helm_name
+
+
+=============mysql secret =====================
+https://gitlab.com/nb-tech-support/devops/-/blob/master/Deploy%20MySQL%20on%20Kubernetes
+kubectl create secret generic mysql-root-pass --from-literal=password=root
+
+kubectl create secret generic mysql-user-pass --from-literal=username=gshukla1981 --from-literal=password=Gshukla@12345
+
+kubectl create secret generic mysql-db-url --from-literal=database=Employee
+
+
+

@@ -12,6 +12,7 @@
     <module>demo_zookeeper_image</module>
       <module>demo_kafka_image</module>
       <module>Jdk_Base_Image</module>
+      <module>demo_base_image_mysql</module>
   </modules>
 
   <name>demo_test_image</name>
