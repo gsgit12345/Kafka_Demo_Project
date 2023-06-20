@@ -30,7 +30,7 @@ function cleanProduct
 {
 helm delete test_zookeeper  --namespace=${NAMESPACE}
 helm delete test_kafka  --namespace=${NAMESPACE}
-helm delete test_kafka  --namespace=${NAMESPACE}
+helm delete test_mysql  --namespace=${NAMESPACE}
 
 }
 
