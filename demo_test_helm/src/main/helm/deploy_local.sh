@@ -31,11 +31,20 @@ function cleanProduct
 helm delete test_zookeeper  --namespace=${NAMESPACE}
 helm delete test_kafka  --namespace=${NAMESPACE}
 helm delete test_mysql  --namespace=${NAMESPACE}
+kubectl delete secret mysql-root-pass
+kubectl delete secret mysql-user-pass
+kubectl delete secret mysql-db-url
 
 }
-
-
- cleanNamespace || true
+function createMysqlEnv
+{
+kubectl create secret generic mysql-root-pass --from-literal=password=root
+kubectl create secret generic mysql-user-pass --from-literal=username=gshukla1981 --from-literal=password=Gshukla@12345
+kubectl create secret generic mysql-db-url --from-literal=database=Employee
+}
+cleanProduct ||true
+cleanNamespace || true
+createMysqlEnv ||true
 
 #helm upgrade --debug --force --wait-for-jobs --atomic --install demo-zookeeper  test_zookeeper  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}
 #helm upgrade --debug --force --wait-for-jobs --atomic --install kafkademo  test_kafka  --timeout 15m  --set serviceType=NodePort --version ${VERSION} --namespace=${NAMESPACE}

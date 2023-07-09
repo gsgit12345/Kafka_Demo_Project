@@ -15,9 +15,8 @@ CREATE TABLE student (
     course_id int
 );
 
-
 CREATE TABLE course (
-    id int identity(1,1) primary key ,
+    id int auto_increment primary key ,
     name varchar(255),
     duration int
 );

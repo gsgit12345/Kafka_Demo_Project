@@ -5,8 +5,10 @@ helm lint  helm_name
 helm template helm_name
 
 
-=============mysql secret =====================
+=============before deployig mysql mysql secret =====================
 https://gitlab.com/nb-tech-support/devops/-/blob/master/Deploy%20MySQL%20on%20Kubernetes
+
+https://onecompiler.com/mysql/3zc9psdag
 
 kubectl create secret generic mysql-root-pass --from-literal=password=root
 
