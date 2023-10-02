@@ -15,14 +15,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot.version>2.7.13</spring-boot.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <spring-boot.version>2.7.14</spring-boot.version>
         <docker-maven-plugin.version>0.39.1</docker-maven-plugin.version>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
 
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -39,6 +38,13 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

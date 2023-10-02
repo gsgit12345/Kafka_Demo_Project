@@ -6,6 +6,9 @@ helm template helm_name
 
 
 =============before deployig mysql mysql secret =====================
+sh -x deploy_local.sh
+starting key cloak:-docker run -p 8181:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.1 start-dev
+
 https://gitlab.com/nb-tech-support/devops/-/blob/master/Deploy%20MySQL%20on%20Kubernetes
 
 https://onecompiler.com/mysql/3zc9psdag
